@@ -37,9 +37,7 @@ describe('redux-either', () => {
 
     const createStoreWithMiddleware = applyMiddleware(
       futureMiddleware
-    , eitherMiddleware( e => e.isLeft
-                      , e => e.isRight
-                      , e => e.fold(R.identity, R.identity))
+    , eitherMiddleware( Either, (l, r, e) => e.fold(l, r))
     )(createStore)
 
     store = createStoreWithMiddleware(counter);

@@ -17,11 +17,9 @@ npm install --save redux-either
 
 ```js
 import eitherMiddleware from 'redux-either';
-import Either from 'data.either';
+import { Either } from 'ramda-fantasy';
 const createStoreWithMiddleware = applyMiddleware(
-  eitherMiddleware( e => e.isLeft // check if is left
-                  , e => e.isRight // check if is right
-                  , e => e.fold(R.identity, R.identity)) // get value of either
+  eitherMiddleware(Either, Either.either)
 )(createStore)
 ```
 

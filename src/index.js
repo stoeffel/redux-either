@@ -7,20 +7,22 @@ const omit = attr => action => {
   return clone;
 };
 
-export default (isLeft, isRight, either) => function eitherMiddleware({ dispatch }) {
-  const isEither = val => val && (isLeft(val) || isRight(val));
+const id = x => x;
+
+export default (Either, either) => function eitherMiddleware({ dispatch }) {
+  const isEither = val => val instanceof Either;
 
   return next => action => {
     if (!isFSA(action)) {
       return isEither(action.either)
-      ? dispatch({ ...omit('either')(action), payload: either(action.either) })
+      ? dispatch({ ...omit('either')(action), payload: either(id, id, action.either) })
       : next(action);
     }
 
     return isEither(action.payload)
-    ? isLeft(action.payload)
-      ? dispatch({ ...omit('payload')(action), error: either(action.payload) })
-      : dispatch({ ...action, payload: either(action.payload) })
+    ?  either( leftVal  => dispatch({ ...omit('payload')(action), error: leftVal })
+             , rightVal => dispatch({ ...action, payload: rightVal })
+             , action.payload)
     : next(action);
   };
 }

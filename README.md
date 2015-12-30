@@ -40,7 +40,7 @@ store.dispatch({
 
 ## Using in combination with redux-actions
 
-Because it supports FSA actions, you can use redux-io in combination with [redux-actions](https://github.com/acdlite/redux-actions).
+Because it supports FSA actions, you can use redux-either in combination with [redux-actions](https://github.com/acdlite/redux-actions).
 
 ### Example: Action creators
 
@@ -53,7 +53,7 @@ store.dispatch(action(R.map(R.toUpper, Either.Left('error'))));
 // => error will be 'error'
 ```
 
-### Example: Future(IO)
+### Example: Future(Either)
 
 You can use `redux-either` together with [`redux-future`](https://github.com/stoeffel/redux-future).
 
@@ -75,11 +75,12 @@ store.dispatch(action(futureEither));
 
 ## Related
 
-### What's an IO?
-* [mostly-adequate-guide  Chapter 8.5 Old McDonald had Effects...](https://drboolean.gitbooks.io/mostly-adequate-guide/content/ch8.html)
+### What's an Either?
+* [mostly-adequate-guide  Chapter 8.4 Pure Error Handling](https://drboolean.gitbooks.io/mostly-adequate-guide/content/ch8.html)
 
 ### Libraries
 
 * [ramda-fantasy](https://github.com/ramda/ramda-fantasy)
-* [fantasy-io](https://github.com/fantasy-land/fantasy-io)
+* [folktale#data.either](https://github.com/folktale/data.either)
+* [redux-io](https://github.com/stoeffel/redux-io)
 * [redux-future](https://github.com/stoeffel/redux-future)

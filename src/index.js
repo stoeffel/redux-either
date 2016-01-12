@@ -20,7 +20,7 @@ export default (Either, either) => function eitherMiddleware({ dispatch }) {
     }
 
     return isEither(action.payload)
-    ?  either( leftVal  => dispatch({ ...omit('payload')(action), error: leftVal })
+    ?  either( leftVal  => dispatch({ ...omit('payload')(action), payload: leftVal, error: true })
              , rightVal => dispatch({ ...action, payload: rightVal })
              , action.payload)
     : next(action);

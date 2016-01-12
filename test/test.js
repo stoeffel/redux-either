@@ -78,7 +78,7 @@ describe('redux-either', () => {
 
   it('should work with FSA and Left', done => {
     unsubscribe = store.subscribe(() => {
-      expect(store.getState().error).toEqual('test');
+      expect(store.getState().error).toEqual(true);
       done();
     });
 

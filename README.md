@@ -84,7 +84,7 @@ store.dispatch(action(futureEither));
 ## Related
 
 ### What's an Either?
-* [mostly-adequate-guide  Chapter 8.4 Pure Error Handling](https://drboolean.gitbooks.io/mostly-adequate-guide/content/ch8.html)
+* [mostly-adequate-guide  Chapter 8.4 Pure Error Handling](https://drboolean.gitbooks.io/mostly-adequate-guide/content/ch8.html#pure-error-handling)
 
 ### Libraries
 

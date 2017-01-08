@@ -35,12 +35,14 @@ describe('redux-either', () => {
       }
     }
 
-    const createStoreWithMiddleware = applyMiddleware(
-      futureMiddleware
-    , eitherMiddleware( Either, (l, r, e) => e.fold(l, r))
-    )(createStore)
-
-    store = createStoreWithMiddleware(counter);
+    store = createStore(
+      counter
+    , initialState
+    , applyMiddleware(
+        futureMiddleware
+      , eitherMiddleware( Either, (l, r, e) => e.fold(l, r))
+      )
+    );
   });
 
 
